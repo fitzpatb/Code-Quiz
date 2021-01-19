@@ -1,0 +1,11 @@
+#timer {
+  float:right;
+}
+
+#title-question {
+  text-align: center;
+}
+
+.my-border {
+  border: 5px solid black;
+}
