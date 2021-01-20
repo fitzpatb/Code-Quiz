@@ -6,6 +6,11 @@
   text-align: center;
 }
 
+button {
+  display: block;
+}
+
 .my-border {
   border: 5px solid black;
 }
+
