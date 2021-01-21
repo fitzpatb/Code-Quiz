@@ -8,9 +8,19 @@
 
 button {
   display: block;
+  background-color: blue;
+  width: 200px;
+  margin-top: 5px;;
+}
+
+#quest {
+  display: block;
 }
 
 .my-border {
   border: 5px solid black;
 }
 
+.container {
+  min-height: 500px;
+}

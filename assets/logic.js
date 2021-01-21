@@ -7,17 +7,14 @@ var questions = [ {
   question:"How you doing?", one:"Good", two:"Bad", three:"meh", four:"help", answer:"Bad"
 }, {
   question:"Will Tomorrow be better?", one:"unlikely", two:"why bother", three:"no chance", four:"give up now", answer:"unlikely"
-}
+},
 ]
 var ans1 = document.createElement("button");
 var ans2 = document.createElement("button");
 var ans3 = document.createElement("button");
 var ans4 = document.createElement("button");
-var correct = document.createElement("p");
-var wrong = document.createElement("p");
+var res5 = document.createElement("div");
 
-correct.innerHTML = "CORRECT";
-wrong.innerHTML = "WRONG";
 
 var i = 0;
 
@@ -39,139 +36,171 @@ quizEl.addEventListener("click", function() {
     }
   }, 1000);
 
+  var score = 0;
+
   quizEl.setAttribute("style", "display:none");
   titQuesEl.textContent = questions[i].question;
   ans1.innerHTML = questions[i].one;
   ans2.innerHTML = questions[i].two;
   ans3.innerHTML = questions[i].three;
   ans4.innerHTML = questions[i].four;
+  status.innerHTML = "correct";
   questEl.appendChild(ans1);
   questEl.appendChild(ans2);
   questEl.appendChild(ans3);
   questEl.appendChild(ans4);
+  questEl.appendChild(res5);
 
   ans1.addEventListener("click", function() {
     if (ans1.innerHTML === questions[i].answer) {
       i++;
-      questEl.appendChild(correct);
+      score++;
+      res5.innerHTML = "correct";
       if (i === questions.length) {
         titQuesEl.textContent = "Finished!"
         ans1.remove();
         ans2.remove();
         ans3.remove();
         ans4.remove();
+      } else if (i < questions.length) {
+        titQuesEl.textContent = questions[i].question;
+        ans1.innerHTML = questions[i].one;
+        ans2.innerHTML = questions[i].two;
+        ans3.innerHTML = questions[i].three;
+        ans4.innerHTML = questions[i].four;
       }
     } else if (ans1.innerHTML !== questions[i].answer) {
       i++;
       time = time - 5;
-      questEl.appendChild(wrong);
+      res5.innerHTML = "wrong";
       if (i === questions.length) {
         titQuesEl.textContent = "Finished!"
         ans1.remove();
         ans2.remove();
         ans3.remove();
         ans4.remove();
+      } else if (i < questions.length) {
+        titQuesEl.textContent = questions[i].question;
+        ans1.innerHTML = questions[i].one;
+        ans2.innerHTML = questions[i].two;
+        ans3.innerHTML = questions[i].three;
+        ans4.innerHTML = questions[i].four;
       }
     }
-    titQuesEl.textContent = questions[i].question;
-    ans1.innerHTML = questions[i].one;
-    ans2.innerHTML = questions[i].two;
-    ans3.innerHTML = questions[i].three;
-    ans4.innerHTML = questions[i].four;
 
   })
 
   ans2.addEventListener("click", function() {
     if (ans2.innerHTML === questions[i].answer) {
       i++;
-      questEl.appendChild(correct);
+      score++;
+      res5.innerHTML = "correct";
       if (i === questions.length) {
         titQuesEl.textContent = "Finished!"
         ans1.remove();
         ans2.remove();
         ans3.remove();
         ans4.remove();
+      } else if (i < questions.length) {
+        titQuesEl.textContent = questions[i].question;
+        ans1.innerHTML = questions[i].one;
+        ans2.innerHTML = questions[i].two;
+        ans3.innerHTML = questions[i].three;
+        ans4.innerHTML = questions[i].four;
       }
     } else if (ans2.innerHTML !== questions[i].answer) {
       i++;
       time = time - 5;
-      questEl.appendChild(wrong);
+      res5.innerHTML = "wrong";
       if (i === questions.length) {
         titQuesEl.textContent = "Finished!"
         ans1.remove();
         ans2.remove();
         ans3.remove();
         ans4.remove();
+      } else if (i < questions.length) {
+        titQuesEl.textContent = questions[i].question;
+        ans1.innerHTML = questions[i].one;
+        ans2.innerHTML = questions[i].two;
+        ans3.innerHTML = questions[i].three;
+        ans4.innerHTML = questions[i].four;
       }
     }
-    titQuesEl.textContent = questions[i].question;
-    ans1.innerHTML = questions[i].one;
-    ans2.innerHTML = questions[i].two;
-    ans3.innerHTML = questions[i].three;
-    ans4.innerHTML = questions[i].four;
-
   })
 
   ans3.addEventListener("click", function() {
     if (ans3.innerHTML === questions[i].answer) {
       i++;
-      questEl.appendChild(correct);
+      res5.innerHTML = "correct";
       if (i === questions.length) {
         titQuesEl.textContent = "Finished!"
         ans1.remove();
         ans2.remove();
         ans3.remove();
         ans4.remove();
+      } else if (i < questions.length) {
+        titQuesEl.textContent = questions[i].question;
+        ans1.innerHTML = questions[i].one;
+        ans2.innerHTML = questions[i].two;
+        ans3.innerHTML = questions[i].three;
+        ans4.innerHTML = questions[i].four;
       }
     } else if (ans3.innerHTML !== questions[i].answer) {
       i++;
       time = time - 5;
-      questEl.appendChild(wrong);
+      res5.innerHTML = "wrong";
       if (i === questions.length) {
         titQuesEl.textContent = "Finished!"
         ans1.remove();
         ans2.remove();
         ans3.remove();
         ans4.remove();
+      } else if (i < questions.length) {
+        titQuesEl.textContent = questions[i].question;
+        ans1.innerHTML = questions[i].one;
+        ans2.innerHTML = questions[i].two;
+        ans3.innerHTML = questions[i].three;
+        ans4.innerHTML = questions[i].four;
       }
     }
-    titQuesEl.textContent = questions[i].question;
-    ans1.innerHTML = questions[i].one;
-    ans2.innerHTML = questions[i].two;
-    ans3.innerHTML = questions[i].three;
-    ans4.innerHTML = questions[i].four;
 
   })
 
   ans4.addEventListener("click", function() {
     if (ans4.innerHTML === questions[i].answer) {
       i++;
-      questEl.appendChild(correct);
+      res5.innerHTML = "correct";
       if (i === questions.length) {
         titQuesEl.textContent = "Finished!"
         ans1.remove();
         ans2.remove();
         ans3.remove();
         ans4.remove();
+      } else if (i < questions.length) {
+        titQuesEl.textContent = questions[i].question;
+        ans1.innerHTML = questions[i].one;
+        ans2.innerHTML = questions[i].two;
+        ans3.innerHTML = questions[i].three;
+        ans4.innerHTML = questions[i].four;
       }
     } else if (ans4.innerHTML !== questions[i].answer) {
       i++;
       time = time - 5;
-      questEl.appendChild(wrong);
+      res5.innerHTML = "wrong";
       if (i === questions.length) {
         titQuesEl.textContent = "Finished!"
         ans1.remove();
         ans2.remove();
         ans3.remove();
         ans4.remove();
+      } else if (i < questions.length) {
+        titQuesEl.textContent = questions[i].question;
+        ans1.innerHTML = questions[i].one;
+        ans2.innerHTML = questions[i].two;
+        ans3.innerHTML = questions[i].three;
+        ans4.innerHTML = questions[i].four;
       }
     }
-    titQuesEl.textContent = questions[i].question;
-    ans1.innerHTML = questions[i].one;
-    ans2.innerHTML = questions[i].two;
-    ans3.innerHTML = questions[i].three;
-    ans4.innerHTML = questions[i].four;
-
   })
 });
 //in a container have a button called start quiz
