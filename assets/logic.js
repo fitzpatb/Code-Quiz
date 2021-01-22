@@ -17,8 +17,16 @@ var ans1 = document.createElement("button");
 var ans2 = document.createElement("button");
 var ans3 = document.createElement("button");
 var ans4 = document.createElement("button");
+
+var submit = document.createElement("button");
+submit.innerHTML = "submit highscore";
+
 var res5 = document.createElement("div");
 
+var initials = document.createElement("input");
+initials.setAttribute("type", "text");
+initials.setAttribute("placeholder", "initials");
+var highScores = document.createElement("div");
 
 var i = 0;
 
@@ -55,6 +63,7 @@ quizEl.addEventListener("click", function() {
   questEl.appendChild(ans4);
   questEl.appendChild(res5);
 
+
   ans1.addEventListener("click", function() {
     if (ans1.innerHTML === questions[i].answer) {
       i++;
@@ -71,6 +80,8 @@ quizEl.addEventListener("click", function() {
         score = score + bonus;
         res5.innerHTML = "Score: " + score;
         localStorage.setItem("score", score);
+        questEl.appendChild(initials);
+        questEl.appendChild(submit);
       } else if (i < questions.length) {
         titQuesEl.textContent = questions[i].question;
         ans1.innerHTML = questions[i].one;
@@ -93,6 +104,8 @@ quizEl.addEventListener("click", function() {
         score = score + bonus;
         res5.innerHTML = "Score: " + score;
         localStorage.setItem("score", score);
+        questEl.appendChild(initials);
+        questEl.appendChild(submit);
       } else if (i < questions.length) {
         titQuesEl.textContent = questions[i].question;
         ans1.innerHTML = questions[i].one;
@@ -120,6 +133,8 @@ quizEl.addEventListener("click", function() {
         score = score + bonus;
         res5.innerHTML = "Score: " + score;
         localStorage.setItem("score", score);
+        questEl.appendChild(initials);
+        questEl.appendChild(submit);
       } else if (i < questions.length) {
         titQuesEl.textContent = questions[i].question;
         ans1.innerHTML = questions[i].one;
@@ -142,6 +157,8 @@ quizEl.addEventListener("click", function() {
         score = score + bonus;
         res5.innerHTML = "Score: " + score;
         localStorage.setItem("score", score);
+        questEl.appendChild(initials);
+        questEl.appendChild(submit);
       } else if (i < questions.length) {
         titQuesEl.textContent = questions[i].question;
         ans1.innerHTML = questions[i].one;
@@ -168,6 +185,8 @@ quizEl.addEventListener("click", function() {
         score = score + bonus;
         res5.innerHTML = "Score: " + score;
         localStorage.setItem("score", score);
+        questEl.appendChild(initials);
+        questEl.appendChild(submit);
       } else if (i < questions.length) {
         titQuesEl.textContent = questions[i].question;
         ans1.innerHTML = questions[i].one;
@@ -190,6 +209,8 @@ quizEl.addEventListener("click", function() {
         score = score + bonus;
         res5.innerHTML = "Score: " + score;
         localStorage.setItem("score", score);
+        questEl.appendChild(initials);
+        questEl.appendChild(submit);
       } else if (i < questions.length) {
         titQuesEl.textContent = questions[i].question;
         ans1.innerHTML = questions[i].one;
@@ -217,6 +238,8 @@ quizEl.addEventListener("click", function() {
         score = score + bonus;
         res5.innerHTML = "Score: " + score;
         localStorage.setItem("score", score);
+        questEl.appendChild(initials);
+        questEl.appendChild(submit);
       } else if (i < questions.length) {
         titQuesEl.textContent = questions[i].question;
         ans1.innerHTML = questions[i].one;
@@ -239,6 +262,8 @@ quizEl.addEventListener("click", function() {
         score = score + bonus;
         res5.innerHTML = "Score: " + score;
         localStorage.setItem("score", score);
+        questEl.appendChild(initials);
+        questEl.appendChild(submit);
       } else if (i < questions.length) {
         titQuesEl.textContent = questions[i].question;
         ans1.innerHTML = questions[i].one;
@@ -249,6 +274,20 @@ quizEl.addEventListener("click", function() {
     }
   })
 });
+
+submit.addEventListener("click", function() {
+  var highscore = {
+    init: initials.value,
+    score: localStorage.getItem(score)
+  }
+  questEl.appendChild(highScores);
+  //save initials and score to local storage
+  //view list of highscores
+  //change finished to HighScores
+  //show list of highscores
+  //make a start quiz again button appear
+  //make a button that clears the highscores
+})
 //in a container have a button called start quiz
 
 //upon clicking button timer starts to count down and first question is displayed
