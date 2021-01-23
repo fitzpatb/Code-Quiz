@@ -1,6 +1,5 @@
 var timeEl = document.getElementById("timer");
 var titQuesEl = document.getElementById("title-question");
-var quizEl = document.getElementById("quiz");
 var questEl = document.getElementById("quest")
 
 var questions = [ {
@@ -13,6 +12,11 @@ var questions = [ {
   question:"Which of the following is not a coding language?", one:"Javascript", two:"Bootstrap", three:"CSS", four:"HTML", answer:"Bootstrap"
 }
 ]
+
+var quiz = document.createElement("button");
+quiz.innerHTML = "Start Quiz";
+questEl.appendChild(quiz);
+
 var ans1 = document.createElement("button");
 var ans2 = document.createElement("button");
 var ans3 = document.createElement("button");
@@ -33,15 +37,14 @@ var highScores = document.createElement("div");
 
 var i = 0;
 
-var score = localStorage.getItem("score")
-console.log(score);
+var score = 0;
 var time = 100;
 
 timeEl.textContent = "Time: " + time;
 
 
 
-quizEl.addEventListener("click", function() {
+quiz.addEventListener("click", function() {
   var timerInterval = setInterval(function() {
     time--;
     timeEl.textContent = "Time: " + time;
@@ -51,9 +54,9 @@ quizEl.addEventListener("click", function() {
       clearInterval(timerInterval);
     }
   }, 1000);
+  i = 0;
 
-
-  quizEl.setAttribute("style", "display:none");
+  quiz.setAttribute("style", "display:none");
   titQuesEl.textContent = questions[i].question;
   ans1.innerHTML = questions[i].one;
   ans2.innerHTML = questions[i].two;
@@ -69,7 +72,7 @@ quizEl.addEventListener("click", function() {
 
   ans1.addEventListener("click", function() {
     if (ans1.innerHTML === questions[i].answer) {
-      i++;
+      i = i + 1;
       score++;
       res5.innerHTML = "correct";
       if (i === questions.length) {
@@ -93,7 +96,7 @@ quizEl.addEventListener("click", function() {
         ans4.innerHTML = questions[i].four;
       }
     } else if (ans1.innerHTML !== questions[i].answer) {
-      i++;
+      i = i + 1;
       time = time - 5;
       res5.innerHTML = "wrong";
       if (i === questions.length) {
@@ -122,7 +125,7 @@ quizEl.addEventListener("click", function() {
 
   ans2.addEventListener("click", function() {
     if (ans2.innerHTML === questions[i].answer) {
-      i++;
+      i = i + 1;
       score++;
       res5.innerHTML = "correct";
       if (i === questions.length) {
@@ -146,7 +149,7 @@ quizEl.addEventListener("click", function() {
         ans4.innerHTML = questions[i].four;
       }
     } else if (ans2.innerHTML !== questions[i].answer) {
-      i++;
+      i = i + 1;
       time = time - 5;
       res5.innerHTML = "wrong";
       if (i === questions.length) {
@@ -174,7 +177,7 @@ quizEl.addEventListener("click", function() {
 
   ans3.addEventListener("click", function() {
     if (ans3.innerHTML === questions[i].answer) {
-      i++;
+      i = i + 1;
       score++;
       res5.innerHTML = "correct";
       if (i === questions.length) {
@@ -198,7 +201,7 @@ quizEl.addEventListener("click", function() {
         ans4.innerHTML = questions[i].four;
       }
     } else if (ans3.innerHTML !== questions[i].answer) {
-      i++;
+      i = i + 1;
       time = time - 5;
       res5.innerHTML = "wrong";
       if (i === questions.length) {
@@ -227,7 +230,7 @@ quizEl.addEventListener("click", function() {
 
   ans4.addEventListener("click", function() {
     if (ans4.innerHTML === questions[i].answer) {
-      i++;
+      i = i + 1;
       score++;
       res5.innerHTML = "correct";
       if (i === questions.length) {
@@ -251,7 +254,7 @@ quizEl.addEventListener("click", function() {
         ans4.innerHTML = questions[i].four;
       }
     } else if (ans4.innerHTML !== questions[i].answer) {
-      i++;
+      i = i + 1;
       time = time - 5;
       res5.innerHTML = "wrong";
       if (i === questions.length) {
@@ -287,9 +290,10 @@ submit.addEventListener("click", function() {
   localStorage.setItem("highScore", JSON.stringify(highScore));
   questEl.appendChild(highScores);
   allScores.push(highScore);
+  localStorage.setItem("allScores", allScores);
   console.log(allScores);
   for (var j = 0; j < allScores.length; j++) {
-    highScores.innerHTML = allScores[j].initials + ": " + allScores[j].score;
+    highScores.innerHTML += allScores[j].initials + ": " + allScores[j].score;
   }
   titQuesEl.textContent = "High scores";
   res5.remove();
@@ -308,8 +312,14 @@ submit.addEventListener("click", function() {
 restart.addEventListener("click", function() {
   score = 0;
   time = 100;
+  i = 0;
+  highScores.remove();
+  restart.remove();
+  timeEl.textContent = "Time: " + time;
+  titQuesEl.textContent = "Coding Quiz Challange";
+  quiz.setAttribute("style", "display:block");
   console.log(score);
-  return;
+
 })
 //in a container have a button called start quiz
 
