@@ -21,6 +21,9 @@ var ans4 = document.createElement("button");
 var submit = document.createElement("button");
 submit.innerHTML = "submit highscore";
 
+var restart = document.createElement("button");
+restart.innerHTML = "Take quiz again";
+
 var res5 = document.createElement("div");
 
 var initials = document.createElement("input");
@@ -276,17 +279,37 @@ quizEl.addEventListener("click", function() {
 });
 
 submit.addEventListener("click", function() {
-  var highscore = {
-    init: initials.value,
-    score: localStorage.getItem(score)
+  var allScores = [];
+  var highScore = {
+    initials: initials.value,
+    score: localStorage.getItem("score")
   }
+  localStorage.setItem("highScore", JSON.stringify(highScore));
   questEl.appendChild(highScores);
+  allScores.push(highScore);
+  console.log(allScores);
+  for (var j = 0; j < allScores.length; j++) {
+    highScores.innerHTML = allScores[j].initials + ": " + allScores[j].score;
+  }
+  titQuesEl.textContent = "High scores";
+  res5.remove();
+  initials.remove();
+  submit.remove();
+
+  questEl.appendChild(restart);
   //save initials and score to local storage
   //view list of highscores
   //change finished to HighScores
   //show list of highscores
   //make a start quiz again button appear
   //make a button that clears the highscores
+});
+
+restart.addEventListener("click", function() {
+  score = 0;
+  time = 100;
+  console.log(score);
+  return;
 })
 //in a container have a button called start quiz
 
